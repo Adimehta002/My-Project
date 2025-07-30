@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Form</title>
+  <style>
+    form {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    .submit-btn {
+      margin-top: 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="studentForm" onsubmit="return validateForm()">
+    <h3>Student Form</h3>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required pattern="[A-Za-z\s]{3,}" 
+           title="Name must be at least 3 characters long and contain only letters and spaces">
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required 
+           title="Enter a valid email address">
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required min="5" max="100"
+           title="Age must be between 5 and 100">
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const age = parseInt(document.getElementById("age").value);
+
+      if (name === "" || email === "" || isNaN(age)) {
+        alert("All fields are required.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+
+</body>
+</html>
