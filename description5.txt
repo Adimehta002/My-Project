@@ -1,0 +1,12 @@
+This experiment is all about making web pages feel alive. Instead of static lists,
+ you’ll build a product interface that responds instantly to user input no page reloads, no waiting. 
+ Just smooth, real-time filtering using JavaScript and the DOM.
+By selecting a category from a dropdown menu, users can instantly see only the products that match their choice. 
+It’s a simple but powerful way to learn how JavaScript can control what users see and how they interact with your site.
+
+LEARNING OUTCOMES :
+- DOM manipulation: Dynamically show or hide elements based on user actions.
+- Event handling: Use the change event to trigger updates when the dropdown value changes.
+- Data attributes: Organize and filter items using custom data-category tags.
+- Real time UI Updates: create a seamless user experience without reloading the page.
+- Clean code structure: separate HTML, CSS, and JavaScript for maintainability.
