@@ -1,0 +1,50 @@
+// Student Management System using Node.js, Express, and MongoDB (Single File Version)
+
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+
+const app = express();
+app.use(bodyParser.json());
+
+// ====== DATABASE CONNECTION ======
+mongoose.connect("mongodb://127.0.0.1:27017/studentDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB Connected"))
+.catch((err) => console.error("❌ MongoDB connection error:", err));
+
+// ====== MODEL ======
+const studentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: { type: Number, required: true },
+  course: { type: String, required: true },
+});
+const Student = mongoose.model("Student", studentSchema);
+
+// ====== CONTROLLER FUNCTIONS ======
+
+// Create student
+app.post("/api/students", async (req, res) => {
+  try {
+    const student = new Student(req.body);
+    await student.save();
+    res.status(201).json(student);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Get all students
+app.get("/api/students", async (req, res) => {
+  try {
+    const students = await Student.find();
+    res.json(students);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get student by ID
+app.get("/api/stu
